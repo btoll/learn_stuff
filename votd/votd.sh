@@ -18,9 +18,13 @@ getTip
 
 # Resend if it's not a helpful tip!
 # http://unix.stackexchange.com/a/48536
-# This tip was deleted from the original vim.org web site, probably because it was spam.
-# Tip 1241 has been removed
-if grep -q "It is hard to find helpful information if there are too many tips" $FILE; then
+#
+# Text from removed tips:
+#       Tip 657 does not exist
+#       Tip 1241 has been removed
+if grep -q "Tip $TIP does not exist" $FILE; then
+    getTip
+elif grep -q "Tip $TIP has been removed" $FILE; then
     getTip
 fi
 
@@ -41,3 +45,4 @@ mv tmp $FILE
 php votd.php $FILE
 
 rm $FILE
+
